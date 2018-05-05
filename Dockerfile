@@ -6,6 +6,9 @@ RUN dpkg-reconfigure locales && \
   locale-gen en_US.UTF-8 && \
   update-locale LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
+COPY . /code
+WORKDIR /code
+
 RUN sed -i -e "s@constexpr const int kDonateLevel = 2@constexpr const int kDonateLevel = 0@" src/donate.h && mkdir build && cd build && \
   cmake .. -DCMAKE_BUILD_TYPE=Release -DUV_LIBRARY=/usr/lib/x86_64-linux-gnu/libuv.a && \
   make && mv xmrig-proxy /
