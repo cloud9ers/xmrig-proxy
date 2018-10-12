@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y locales git build-essential cmake libuv1-dev uuid-dev libmicrohttpd-dev
+RUN apt-get update && apt-get install -y locales git build-essential cmake libuv1-dev uuid-dev libmicrohttpd-dev libssl-dev
 
 RUN dpkg-reconfigure locales && \
   locale-gen en_US.UTF-8 && \
