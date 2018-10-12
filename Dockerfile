@@ -15,6 +15,6 @@ RUN sed -i -e "s@constexpr const int kDonateLevel = 2@constexpr const int kDonat
 
 FROM ubuntu:16.04
 WORKDIR    /
-RUN apt-get update && apt-get install -y libmicrohttpd10 && apt-get clean -y
+RUN apt-get update && apt-get install -y libmicrohttpd10 libssl1.0.0 && apt-get clean -y
 COPY --from=0 /xmrig-proxy .
 ENTRYPOINT ["./xmrig-proxy"]
